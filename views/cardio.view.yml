@@ -1,0 +1,136 @@
+name: cardio
+description: 4x4 HIIT cardio — one row per interval set
+datasource: gsheets
+table: cardio
+date_field: date
+
+plannable:
+  log_field: start_time
+  log_format: time_string
+
+entities:
+  - name: cardio_set
+    type: primary
+    key: id
+
+dimensions:
+  - name: id
+    type: string
+    expr: id
+    input:
+      editable: false
+
+  - name: date
+    type: date
+    expr: "Date"
+    description: Workout day
+    input:
+      widget: date
+      default: today
+      required: true
+
+  - name: day_of_week
+    type: string
+    expr: "Day of Week"
+    derive:
+      from: date
+      format: weekday_long
+
+  - name: type
+    type: string
+    expr: "Type"
+    description: Cardio modality (drives which fields show below)
+    input:
+      widget: dropdown
+      required: true
+      options: [treadmill, stairmaster, bike, rower]
+
+  # Treadmill-specific
+  - name: incline
+    type: number
+    expr: "Treadmill Incline"
+    description: Incline (%)
+    show_when: { type: treadmill }
+    input:
+      widget: number
+      min: 0
+      max: 15
+
+  - name: treadmill_speed
+    type: number
+    expr: "Treadmill Speed"
+    description: Speed (mph)
+    show_when: { type: treadmill }
+    input:
+      widget: number
+      min: 0
+      max: 15
+
+  # Stairmaster-specific
+  - name: stairmaster_speed
+    type: number
+    expr: "Stairmaster Speed"
+    description: Level / speed
+    show_when: { type: stairmaster }
+    input:
+      widget: number
+      min: 0
+      max: 30
+
+  # Common 4x4 fields
+  - name: zone4_reached
+    type: string
+    expr: "Time Zone 4 Reached"
+    description: Time you hit Zone 4 (blank = never reached)
+    input:
+      widget: text
+      placeholder: 0:01:30
+
+  - name: zone5_reached
+    type: string
+    expr: "Time Zone 5 Reached"
+    description: Time you hit Zone 5 (blank = never reached)
+    input:
+      widget: text
+      placeholder: 0:02:45
+
+  - name: total_time
+    type: string
+    expr: "Total Time"
+    description: Total interval time (mm:ss)
+    input:
+      widget: text
+      placeholder: "4:00"
+      required: true
+
+  - name: max_hr
+    type: number
+    expr: "Max Heart Rate"
+    description: Max heart rate during this interval
+    input:
+      widget: number
+      min: 60
+      max: 230
+
+  - name: start_time
+    type: string
+    expr: "Start Time"
+    description: Time of day (blank = planned). Tap the clock to stamp now.
+    input:
+      widget: text
+      placeholder: 3:54:00 PM
+      now_button: true
+
+  - name: notes
+    type: string
+    expr: "Notes"
+    input:
+      widget: longtext
+
+list_display:
+  title: type
+  subtitle: "${total_time} / ${max_hr}bpm"
+
+measures:
+  - name: interval_count
+    type: count

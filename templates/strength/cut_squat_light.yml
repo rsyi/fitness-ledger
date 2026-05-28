@@ -1,0 +1,20 @@
+name: "Cut · Squat (light)"
+view: strength
+description: >
+  Light squat — used on heavy-DL weeks. No top single, 2 working triples at
+  70-80% of max, RPE 5-6. Lets the spine recover between heavy SQ weeks.
+  Also use ad-hoc if back is guarded.
+variables:
+  - { name: light_weight, label: "Light weight (lb)", type: number, default: 215 }
+entries:
+  # Short warmup
+  - { exercise: Barbell Squat, weight: 45,  reps: 5, notes: "warmup" }
+  - { exercise: Barbell Squat, weight: 135, reps: 3, notes: "warmup" }
+  - { exercise: Barbell Squat, weight: 185, reps: 2, notes: "warmup" }
+  # Working sets
+  - { exercise: Barbell Squat, weight: "{{ light_weight }}", reps: 3, notes: "light — belted" }
+  - { exercise: Barbell Squat, weight: "{{ light_weight }}", reps: 3, notes: "light — belted" }
+  # Accessory: hanging leg raise (anti-extension core, supports squat brace)
+  - { exercise: Hanging Leg Raise, reps: 8, notes: "" }
+  - { exercise: Hanging Leg Raise, reps: 8, notes: "" }
+  - { exercise: Hanging Leg Raise, reps: 8, notes: "" }

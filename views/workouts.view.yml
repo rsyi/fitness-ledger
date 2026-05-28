@@ -1,0 +1,64 @@
+name: workouts
+description: Workout log (strength, cardio, mobility, climbing)
+datasource: gsheets
+table: workouts
+date_field: done_at
+
+entities:
+  - name: workout
+    type: primary
+    key: id
+
+dimensions:
+  - name: id
+    type: string
+    expr: id
+    input:
+      editable: false
+
+  - name: done_at
+    type: datetime
+    expr: done_at
+    description: When the workout was completed
+    input:
+      widget: datetime
+      default: now
+      required: true
+
+  - name: kind
+    type: string
+    expr: kind
+    description: Workout modality
+    samples: [strength, cardio, mobility, climbing]
+    input:
+      widget: dropdown
+      options: [strength, cardio, mobility, climbing]
+      required: true
+
+  - name: duration_min
+    type: number
+    expr: duration_min
+    description: Total duration in minutes
+    input:
+      widget: number
+      required: true
+      min: 0
+      max: 1440
+
+  - name: notes
+    type: string
+    expr: notes
+    description: Free-form notes (sets, reps, route grades, etc.)
+    input:
+      widget: longtext
+
+list_display:
+  title: kind
+  subtitle: "${duration_min} min"
+
+measures:
+  - name: workout_count
+    type: count
+  - name: total_duration_min
+    type: sum
+    expr: duration_min

@@ -1,0 +1,7 @@
+# Branding config for the Fitness build of the Ledger app.
+# Applied at build time by `dart run ~/repos/ledger/tool/brand.dart \
+#   --config ~/repos/fitness-ledger/ledger.yaml`.
+app_name: "Ledger: Fitness"
+package_id: com.robertyi.fitness
+adb_device: 57041FDCH002VN
+skip_icons: true

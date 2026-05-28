@@ -1,0 +1,18 @@
+name: "Cut · OHP + Bench (deload)"
+view: strength
+description: >
+  Combined press deload — no top singles. 2 sets each of bench and OHP at
+  70-80% of max, RPE 5-6. Use when fatigued or recovering.
+variables:
+  - { name: bench_deload, label: "Bench deload (lb)", type: number, default: 170 }
+  - { name: ohp_deload,   label: "OHP deload (lb)",   type: number, default: 110 }
+entries:
+  - { exercise: Flat Barbell Bench Press, weight: 45,  reps: 5, notes: "warmup" }
+  - { exercise: Flat Barbell Bench Press, weight: 95,  reps: 3, notes: "warmup" }
+  - { exercise: Flat Barbell Bench Press, weight: 135, reps: 2, notes: "warmup" }
+  - { exercise: Flat Barbell Bench Press, weight: "{{ bench_deload }}", reps: 5, notes: "deload" }
+  - { exercise: Flat Barbell Bench Press, weight: "{{ bench_deload }}", reps: 5, notes: "deload" }
+  - { exercise: Overhead Press, weight: 45, reps: 5, notes: "warmup" }
+  - { exercise: Overhead Press, weight: 75, reps: 3, notes: "warmup" }
+  - { exercise: Overhead Press, weight: "{{ ohp_deload }}", reps: 5, notes: "deload" }
+  - { exercise: Overhead Press, weight: "{{ ohp_deload }}", reps: 5, notes: "deload" }

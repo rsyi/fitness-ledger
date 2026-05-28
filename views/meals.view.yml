@@ -1,0 +1,82 @@
+name: meals
+description: Daily meal log with nutrition and timing
+datasource: gsheets
+table: meals
+date_field: eaten_at
+
+entities:
+  - name: meal_entry
+    type: primary
+    key: id
+
+dimensions:
+  - name: id
+    type: string
+    expr: id
+    description: Unique row identifier (UUID)
+    input:
+      editable: false
+
+  - name: eaten_at
+    type: datetime
+    expr: eaten_at
+    description: When the meal was eaten
+    input:
+      widget: datetime
+      default: now
+      required: true
+
+  - name: meal
+    type: string
+    expr: meal
+    description: What was eaten
+    input:
+      widget: text
+      required: true
+      placeholder: e.g. oatmeal with berries
+
+  - name: meal_type
+    type: string
+    expr: meal_type
+    description: Meal slot in the day
+    samples: [breakfast, lunch, dinner, snack]
+    input:
+      widget: dropdown
+      options: [breakfast, lunch, dinner, snack]
+
+  - name: calories
+    type: number
+    expr: calories
+    input:
+      widget: number
+      required: true
+      min: 0
+
+  - name: protein_g
+    type: number
+    expr: protein_g
+    description: Protein in grams
+    input:
+      widget: number
+      min: 0
+
+  - name: notes
+    type: string
+    expr: notes
+    input:
+      widget: longtext
+
+list_display:
+  title: meal
+  subtitle: "${calories} cal • ${meal_type}"
+
+measures:
+  - name: meal_count
+    type: count
+    description: Number of meals logged
+  - name: total_calories
+    type: sum
+    expr: calories
+  - name: avg_protein_g
+    type: average
+    expr: protein_g
