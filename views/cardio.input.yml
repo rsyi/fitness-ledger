@@ -1,0 +1,77 @@
+view: cardio
+date_field: date
+plannable:
+  log_field: start_time
+  log_format: time_string
+dimensions:
+  id:
+    input:
+      editable: false
+  date:
+    input:
+      widget: date
+      default: today
+      required: true
+  day_of_week:
+    derive:
+      from: date
+      format: weekday_long
+  type:
+    input:
+      widget: dropdown
+      required: true
+      options:
+        - treadmill
+        - stairmaster
+        - bike
+        - rower
+  incline:
+    show_when:
+      type: treadmill
+    input:
+      widget: number
+      min: 0
+      max: 15
+  treadmill_speed:
+    show_when:
+      type: treadmill
+    input:
+      widget: number
+      min: 0
+      max: 15
+  stairmaster_speed:
+    show_when:
+      type: stairmaster
+    input:
+      widget: number
+      min: 0
+      max: 30
+  zone4_reached:
+    input:
+      widget: text
+      placeholder: "0:01:30"
+  zone5_reached:
+    input:
+      widget: text
+      placeholder: "0:02:45"
+  total_time:
+    input:
+      widget: text
+      placeholder: "4:00"
+      required: true
+  max_hr:
+    input:
+      widget: number
+      min: 60
+      max: 230
+  start_time:
+    input:
+      widget: text
+      placeholder: "3:54:00 PM"
+      now_button: true
+  notes:
+    input:
+      widget: longtext
+list_display:
+  title: type
+  subtitle: ${total_time} / ${max_hr}bpm
