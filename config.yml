@@ -1,0 +1,18 @@
+# Airledger config — read at build time by brand.dart, resolved against
+# .env, and baked into assets/config.yaml in the APK. Same shape as oxy's
+# config.yml so the three tools (oxy, airlayer, airledger) share the
+# contract. See ~/repos/airledger/docs/oxy-compatibility.md.
+
+# Default spreadsheet for views with datasource: gsheets that don't
+# specify their own spreadsheet_id.
+spreadsheet_id: 1C1rSudguUv00gYsb7i82XV6OM1V2KSZ4BGwMliwKDG4
+
+databases:
+  - name: gsheets
+    type: sheets
+    spreadsheet_id: 1C1rSudguUv00gYsb7i82XV6OM1V2KSZ4BGwMliwKDG4
+    # Path to the service-account JSON. Resolved from .env's
+    # GOOGLE_SA_KEY_PATH at build time, then the file's contents are
+    # inlined as `service_account_key`. Keep the actual JSON file
+    # outside the repo (e.g. ~/.config/airledger/service-account.json).
+    service_account_key_path_var: GOOGLE_SA_KEY_PATH
