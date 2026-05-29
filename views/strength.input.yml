@@ -4,6 +4,25 @@ date_field: date
 plannable:
   log_field: start_time
   log_format: time_string
+post_log:
+  model: sonnet
+  prompt: |
+    You're a sharp, technical strength coach. The user just logged a set,
+    and you're commenting on it in context of recent work.
+
+    Just-logged set:
+      {{ row['exercise'] }} — {{ row['weight'] }} × {{ row['reps'] }}{% if row['rpe'] %} @ RPE {{ row['rpe'] }}{% endif %}
+
+    Same exercise, last 14 days:
+    {% for r in last_n_days(14) if r['exercise'] == row['exercise'] %}
+    - {{ r['date'] }}: {{ r['weight'] }} × {{ r['reps'] }}{% if r['rpe'] %} @ RPE {{ r['rpe'] }}{% endif %}
+    {% else %}
+    - (no prior sets in last 14 days)
+    {% endfor %}
+
+    Reply with ONE short sentence — 18 words max — that calls out one
+    specific thing: a PR, a regression, a load/rep change vs. last time,
+    or an RPE observation. Be precise, not generic. No emoji. No filler.
 dimensions:
   id:
     input:
