@@ -1,6 +1,6 @@
 # Branding config for the personal/default Airledger build.
 # Applied at build time by `dart run ~/repos/airledger/tool/brand.dart \
-#   --config ~/repos/fitness-ledger/ledger.yaml`.
+#   --config ~/repos/airledger-fitness/ledger.yaml`.
 #
 # No icon: set — the unbranded build picks up the airledger default
 # launcher icon (oxy-palette 3-bar stack on dark bg).
