@@ -1,4 +1,5 @@
 target: meals.view.yml
+icon: utensils
 date_field: eaten_at
 dimensions:
   id:

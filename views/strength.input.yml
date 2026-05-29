@@ -1,4 +1,5 @@
 target: strength.view.yml
+icon: dumbbell
 date_field: date
 plannable:
   log_field: start_time

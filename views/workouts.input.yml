@@ -1,4 +1,5 @@
 target: workouts.view.yml
+icon: flame
 date_field: done_at
 dimensions:
   id:
