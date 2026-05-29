@@ -1,5 +1,5 @@
+target: strength.view.yml
 name: "Cut · Deadlift (reentry)"
-view: strength
 description: >
   Reentry mode — returning from a deload or back issue. One conservative
   top single 15-20 lb below normal, capped at RPE 8, to confirm readiness

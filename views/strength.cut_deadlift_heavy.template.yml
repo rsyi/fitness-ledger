@@ -1,5 +1,5 @@
+target: strength.view.yml
 name: "Cut · Deadlift (heavy)"
-view: strength
 description: >
   Cut-phase deadlift, normal/heavy mode. Bridged warmup to one quality top
   single (RPE 8-8.5), 2 backoff triples (~13% under), one paused technique

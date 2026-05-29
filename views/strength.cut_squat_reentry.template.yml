@@ -1,5 +1,5 @@
+target: strength.view.yml
 name: "Cut · Squat (reentry)"
-view: strength
 description: >
   Squat reentry — one conservative top single 15-20 lb below normal, RPE <=8,
   to confirm readiness. Light backoffs, no paused work.

@@ -1,5 +1,5 @@
+target: strength.view.yml
 name: Strength B
-view: strength
 description: Deadlift / overhead press / pulldown day — set your working weights once
 variables:
   - { name: deadlift, label: "Deadlift working weight", type: number, default: 225 }

@@ -1,5 +1,5 @@
+target: strength.view.yml
 name: "Cut · Squat (heavy)"
-view: strength
 description: >
   Cut-phase squat, normal/heavy mode. Bridged warmup to one quality top
   single (RPE 8-8.5), 2 backoff triples (~15% under), one paused-in-the-hole

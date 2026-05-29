@@ -1,4 +1,4 @@
-view: meals
+target: meals.view.yml
 date_field: eaten_at
 dimensions:
   id:

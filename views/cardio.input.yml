@@ -1,4 +1,4 @@
-view: cardio
+target: cardio.view.yml
 date_field: date
 plannable:
   log_field: start_time

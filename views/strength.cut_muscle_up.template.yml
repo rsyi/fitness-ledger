@@ -1,5 +1,5 @@
+target: strength.view.yml
 name: "Cut · Muscle-Up"
-view: strength
 description: >
   Muscle-up skill day. Banded MU attempts (set `band` to current band),
   transition negatives for sticking-point work, plus pulling and dipping

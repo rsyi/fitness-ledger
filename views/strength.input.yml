@@ -1,4 +1,4 @@
-view: strength
+target: strength.view.yml
 date_field: date
 plannable:
   log_field: start_time

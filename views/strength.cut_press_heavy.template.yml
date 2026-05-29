@@ -1,5 +1,5 @@
+target: strength.view.yml
 name: "Cut · OHP + Bench (heavy)"
-view: strength
 description: >
   Combined press day. Bench heavy top single + backoff first (fresh), then
   OHP top single + backoff, then face pulls for rear-delt / cuff health.

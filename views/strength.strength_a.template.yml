@@ -1,5 +1,5 @@
+target: strength.view.yml
 name: Strength A
-view: strength
 description: Squat / bench / row day — set your working weights once
 variables:
   - { name: squat, label: "Squat working weight", type: number, default: 135 }

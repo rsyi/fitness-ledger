@@ -1,4 +1,4 @@
-view: workouts
+target: workouts.view.yml
 date_field: done_at
 dimensions:
   id:
