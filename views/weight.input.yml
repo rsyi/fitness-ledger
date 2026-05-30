@@ -14,6 +14,11 @@ dimensions:
     derive:
       from: date
       format: weekday_long
+  time:
+    input:
+      widget: text
+      placeholder: "7:45"
+      now_button: true
   weight_lbs:
     input:
       widget: number
